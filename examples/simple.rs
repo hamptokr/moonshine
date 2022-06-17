@@ -3,12 +3,14 @@ use std::time::Duration;
 
 struct Ticker(u64);
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug)]
 enum TickerMessage {
     Tick,
 }
 
-impl Model<TickerMessage> for Ticker {
+impl Model for Ticker {
+    type Message = TickerMessage;
+
     fn init(&self) -> Option<Command<TickerMessage>> {
         Some(Box::new(tick))
     }
@@ -24,6 +26,7 @@ impl Model<TickerMessage> for Ticker {
 
                 Some(Box::new(tick))
             }
+            Message::KeyPress(_) => return moonshine::quit(),
             _ => None,
         }
     }

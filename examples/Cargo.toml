@@ -5,7 +5,7 @@ publish = false
 edition = "2021"
 
 [dev-dependencies]
-moonshine = { version = "0.1.0", path = "../moonshine" }
+moonshine = { version = "0.1.0", path = "../" }
 
 [[example]]
 name = "simple"
